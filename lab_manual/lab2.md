@@ -102,3 +102,6 @@
          c.Perform: create, read, update, delete operation for brand
          d.Perform: create, read, update, delete operation for category
          e.Perform: create, read, update, delete operation for product
+
+
+      4.Conclusion:Hence the above code shows adding product brand,category and product.
