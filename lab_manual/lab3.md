@@ -1,5 +1,6 @@
 LAB 3
             Search Products (Admin)
+            
 1.Enhance the admin for search enhancements. Open “admin.py”.
 Replace
 
@@ -54,3 +55,4 @@ Replace
     c.Check out the usage of readonly_fields
 
 8.In the database tool, verify the database, tables and records.
+
