@@ -240,4 +240,4 @@ d.Perform various combination for search operation
 
 
 B.Conclusion:
-    Hence Lab 4 helps in searching products(User)
+    Hence Lab 4 helps in searching products.
