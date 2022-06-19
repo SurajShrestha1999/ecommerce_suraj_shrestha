@@ -245,8 +245,5 @@ b. Add records for brands, categories and products.
 c. In browser, open 'http://127.0.0.1:8000 for user interfrace (search)
 d. Perform various combination for search operation
 
-B.Output:
-![web2](https://user-images.githubusercontent.com/104376833/174480825-9fd69f18-8f2a-4a34-ae57-903da4b9d097.png)
-
-C.Conclusion:
+B.Conclusion:
     Hence we can conclude that Lab 4 helps in searching Products and it's details.
