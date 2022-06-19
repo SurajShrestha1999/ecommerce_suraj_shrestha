@@ -247,4 +247,4 @@ d. Perform various combination for search operation
 
 
 B.Conclusion:
-    Hence we can conclude that Lab 4 helpsin searching Products and it's details.
+    Hence we can conclude that Lab 4 helps in searching Products and it's details.
