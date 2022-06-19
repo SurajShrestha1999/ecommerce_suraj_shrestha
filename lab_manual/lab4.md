@@ -180,7 +180,7 @@ cart" aria-hidden="true"></i> Add to cart</button>
 4.From the project “product_module” open “views.py” and add the code as below for search operation (GET and POST).
 from django.db.models import Q
 from .models import Product, Brand, Category
-...
+
 def index(request):
     if request.method == "GET": 
         category_id = request.GET.get("category")
@@ -245,6 +245,8 @@ b. Add records for brands, categories and products.
 c. In browser, open 'http://127.0.0.1:8000 for user interfrace (search)
 d. Perform various combination for search operation
 
+B.Output:
 
-B.Conclusion:
+
+C.Conclusion:
     Hence we can conclude that Lab 4 helps in searching Products and it's details.
