@@ -1,5 +1,8 @@
 from django.contrib import admin
 from .models import Brand,Category,Product
+from .models import CartItem
+
+admin.site.register(CartItem)
 
 class BrandAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -29,6 +32,7 @@ class CategoryAdmin(admin.ModelAdmin):
         model=Category
 
 admin.site.register(Category,CategoryAdmin)
+
 
 
 

@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.db.models import Q
-from .models import Product, Brand, Category
+from .models import Product, Brand, Category,CartItem
+from django.contrib.auth.decorators import login_required
+from datetime import datetime
 
 def index(request):
     if request.method == "GET":
@@ -41,3 +43,56 @@ def index(request):
                     'search_query': q,
                 }
             return render(request, 'index.html', context)
+
+
+@login_required(login_url="/admin/login")
+def cart(request):
+    # get request data
+    product_id = request.GET.get("id")
+    quantity = request.GET.get("qty")
+
+    if product_id:
+        # retrieve product data
+        product = Product.objects.get(id=product_id)
+
+        try:
+            # get cart item and increase quantity
+            cart_item = CartItem.objects.get(user=request.user,product=product)
+            cart_item.quantity += int(quantity)
+            cart_item.entered_on = datetime.now()
+        except CartItem.DoesNotExist:
+            cart_item = CartItem(
+                user=request.user,
+                product=product,
+                quantity=int(quantity),
+                entered_on = datetime.now(),
+            )
+
+        cart_item.save()
+
+    cart_items = CartItem.objects.filter(user=request.user)
+
+    total = 0
+    for item in cart_items:
+        total += item.product.price * item.quantity
+   
+
+    context = {
+        'cart_items': cart_items,
+        'total': total,
+    }
+    return render(request, "cart.html", context)
+
+def removecart(request, id):
+    try:
+        product = Product.objects.get(id=id)
+        cart_item = CartItem.objects.get(user=request.user, product=product)
+        cart_item.delete()
+    except CartItem.DoesNotExist:
+        pass
+    
+    return redirect(cart)
+
+
+
+      
