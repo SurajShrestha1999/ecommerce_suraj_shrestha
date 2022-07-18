@@ -122,7 +122,7 @@ width:auto;" alt="{{ product.name }}">
 }}</span>
 <h3>{{ product.name }}</h3>
 <h4 class="bold text-secondary">
-<strong>NRs. {{ product.price }}</strong>
+<strong>US${{ product.price }}</strong>
 </h4>
 <form class="d-flex" action="/cart" method="GET">
 <!-- Default input -->

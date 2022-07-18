@@ -16,7 +16,7 @@ def index(request):
             products = Product.objects.filter(filter_query)
         else:
             products = Product.objects.all()
-
+       
         categories = Category.objects.all()
         brands = Brand.objects.all()
         context = {
@@ -26,24 +26,25 @@ def index(request):
                 'search_query': '',
             }
         return render(request, 'index.html', context)
+    
     elif request.method == "POST":
         q = request.POST.get("query")
         if "-" in q:
             price_values = q.split("-")
             filter_query = Q(price__gte=price_values[0]) & Q(price__lte=price_values[1])
-    else:
-            filter_query = Q(name__icontains=q) | Q(price__icontains=q) | Q(brand__name__icontains=q)
-            products = Product.objects.filter(filter_query)
-            categories = Category.objects.all()
-            brands = Brand.objects.all()
-            context = {
-                    'products': products,
-                    'categories': categories,
-                    'brands': brands,
-                    'search_query': q,
-                }
-            return render(request, 'index.html', context)
-
+        else:
+            filter_query = Q(category__name__icontains=q) | Q(price__icontains=q) | Q(brand__name__icontains=q)
+        
+        products = Product.objects.filter(filter_query)
+        categories = Category.objects.all()
+        brands = Brand.objects.all()
+        context = {
+                'products': products,
+                'categories': categories,
+                'brands': brands,
+                'search_query': q,
+            }
+        return render(request, 'index.html', context)
 
 @login_required(login_url="/admin/login")
 def cart(request):
@@ -85,14 +86,22 @@ def cart(request):
 
 def removecart(request, id):
     try:
+        # get cart item and remove it
         product = Product.objects.get(id=id)
         cart_item = CartItem.objects.get(user=request.user, product=product)
         cart_item.delete()
     except CartItem.DoesNotExist:
         pass
-    
+    # redirect to cart
     return redirect(cart)
 
+def success_page(request):
+    message = request.session["message"]
+    return render(request, "success.html", {"message": message})
+
+def error_page(request):
+    message = request.session["message"]
+    return render(request, "error.html", {"message": message})
 
 
       

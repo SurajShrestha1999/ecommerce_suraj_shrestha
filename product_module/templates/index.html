@@ -17,7 +17,7 @@
 {% endfor %}
 {% for brand in brands %}
 <li class="nav-item">
-    <a class="nav-link text-dark" href="/?brand={{brand.id}}">{{brand.name}}</a>
+<a class="nav-link text-dark" href="/?brand={{brand.id}}">{{brand.name}}</a>
 </li>
 {% endfor %}
 </ul>
@@ -37,8 +37,7 @@
 <div class="row border bg-light">
 <div class="col-md-4">
 <div class="text-center">
-<img src="{{ product.image_url }}" style="height:200px;
-width:auto;" alt="{{ product.name }}">
+<img src="{{ product.image_url }}" style="height:200px;width:auto;" alt="{{ product.name }}">
 </div>
 </div>
 <div class="col-md-3">
@@ -46,16 +45,13 @@ width:auto;" alt="{{ product.name }}">
 <span class="btn btn-info disabled">{{ product.category.name}}</span>
 <h3>{{ product.name }}</h3>
 <h4 class="bold text-secondary">
-<strong>US$ {{ product.price }}</strong>
+<strong>US${{ product.price }}</strong>
 </h4>
 <form class="d-flex" action="/cart" method="GET">
 <!-- Default input -->
 <input type="hidden" name="id" value="{{product.id}}" />
-<input type="number" name="qty" value="1" arialabel="
-Search" class="form-control" style="width: 100px">
-<button id="btn-add-to-cart" class="btn btn-primary btn-md"
-type="submit" data-toggle="modal" data-target="#cart-model"><i class="fa fashopping-
-cart" aria-hidden="true"></i> Add to cart</button>
+<input type="number" name="qty" value="1" arialabel="Search" class="form-control" style="width: 100px">
+<button id="btn-add-to-cart" class="btn btn-primary btn-md" type="submit" data-toggle="modal" data-target="#cart-model"><i class="fa fashopping-cart" aria-hidden="true"></i> Add to cart</button>
 </form>
 </div>
 <div class="col-md-5">
@@ -66,29 +62,29 @@ cart" aria-hidden="true"></i> Add to cart</button>
 </tr>
 <tr>
 <td>Color Code</td>
-    <td><div style="height: 25px; width: 25px; background-color:{{ product.color_code }};"></div></td>
+<td><div style="height: 25px; width: 25px; backgroundcolor:{{ product.color_code }};"></div></td>
 </tr>
 <tr>
-    <td>Brand</td>
-    <td>{{product.brand.name}}</td>
+<td>Brand</td>
+<td>{{ product.brand.name }}</td>
 </tr>
 <tr>
-    <td>Category</td>
-    <td>{{product.category.name}}</td>
+<td>Category</td>
+<td>{{ product.category.name }}</td>
 </tr>
 <tr>
-    <td>Registered On</td>
-    <td>{{ product.registered_on }}</td>
+<td>Registered On</td>
+<td>{{ product.registered_on }}</td>
 </tr>
 <tr>
-    <td>Is Active</td>
-    <td>
-    {% if product.is_active %}
-    <input type="checkbox" checked />
-    {% else %}
-    <input type="checkbox" />
-    {% endif %}
-    </td>
+<td>Is Active</td>
+<td>
+{% if product.is_active %}
+<input type="checkbox" checked />
+{% else %}
+<input type="checkbox" />
+{% endif %}
+</td>
 </tr>
 </table>
 </div>
