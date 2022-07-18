@@ -113,14 +113,13 @@ return redirect(cart)
 <tr>
 <td></td>
 <td style="text-align: right;"><h3>Total Price:</h3></td>
-<td><h3>US${{ total }}</h3></td>
+<td><h3>US${{total}}</h3></td>
 <td>
 <form method="post" action="/payment/checkout/">
 {% csrf_token %}
 <div class="input-group">
 <input type="text" class="form-control" name="token" placeholder="Token" />
-<input type="hidden" name="amount" value="{{ total
-}}" />
+<input type="hidden" name="amount" value="{{total}}" />
 <button type="submit" class="btn btn-primary" type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Checkout Payment</button>
 </div>
 </form>
